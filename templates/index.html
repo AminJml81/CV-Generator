@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  {% block content %}
+  <body id="page-top">
+    <div class="container-fluid p-0">
+
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+          <h1 class="mb-0">{{info.0.first_name}}
+            <span class="text-primary">{{info.0.last_name}}</span>
+          </h1>
+          <div class=" subheading mb-5">
+            <a class="blue-color" href="tel:{{info.0.phone_number}}" >{{info.0.phone_number}}</a>   ---------------
+            <a href="mailto:{{info.0.email}}">{{info.0.email}}</a>
+          </div>
+          <p class="heading mb-5">{{info.0.about_text}}</p>
+          <ul class="list-inline list-social-icons mb-0">
+            <li class="list-inline-item">
+              <a href="{{info.0.linkedin_link}}">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"><a href=""></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="{{info.0.github_link}}">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="project">
+        <div class="my-auto">
+          <h2 class="mb-5">PROJECTS</h2>
+          {% for project in projects %}
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0"><a href="{{project.link}}">{{project.title}}</a></h3>
+              <p>{{project.description}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+        <div class="my-auto">
+          <h2 class="mb-5">Education</h2>
+          {% for edu in education %}
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">{{edu.university}}</h3>
+              <div class="subheading mb-3">{{edu.degree}}</div>
+              <div>{{edu.major}}</div>
+            </div>
+            <div class="resume-date text-md-right">
+              <span class="text-primary">{{edu.start_date|date:'M Y'}} - {{edu.graduation_date|date:'M Y'}}</span>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+        <div class="my-auto">
+          <h2 class="mb-5">Skills</h2>
+
+          <div class="subheading mb-3">Programming Languages &amp; Tools</div>
+          <ul class="list-inline list-icons">
+
+            {% for tool in tools %}
+            <li class="list-inline-item">
+              <i class="devicons devicons-{{tool}}"></i>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <div class="subheading mb-3"></div>
+          <ul class="fa-ul mb-0">
+            {% for skill in skills %}
+            <li>
+              <i class="fa-li fa fa-check mb-3"></i>
+              {{skill.description}}</li>
+            <li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="languages">
+        <div class="my-auto">
+          <h2 class="mb-5">Languages</h2>
+          {% for lan in languages %}
+          <p style="font-size: 1.3rem;">{{lan.name}}, {{lan.description}}</p>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="certificates">
+        <div class="my-auto">
+          <h2 class="mb-5">Certifications</h2>
+          <ul class="fa-ul mb-0">
+            {% for certificate in certificates %}
+            <li class="container">
+              <i class="fa-li fa fa-trophy text-warning" style="font-size:20px"></i>
+              <a href="{{certificate.link}}">
+                <p>{{certificate.title}}</p>
+              </a></li>
+            {%endfor%}
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{%static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js' %}"></script>
+
+  {% endblock content %}
+  </body>
+
+</html>
